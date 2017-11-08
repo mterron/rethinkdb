@@ -1,8 +1,9 @@
 FROM alpine:3.6
 
 RUN echo "Rethinkdb for Alpine Linux" &&\
+	apk --no-cache upgrade &&\
 	apk --no-cache add su-exec &&\
-    apk --no-cache add --repository http://dl-3.alpinelinux.org/alpine/edge/testing rethinkdb &&\
+	apk --no-cache add --repository http://dl-3.alpinelinux.org/alpine/edge/testing rethinkdb &&\
 	mkdir /data &&\
 	chown daemon:daemon /data &&\
 	apk info -v | sed "s/-r\d*$//g"|sed 's/\(.*\)-/\1 /' > /etc/manifest.txt
