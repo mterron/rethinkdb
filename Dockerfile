@@ -1,6 +1,22 @@
 FROM alpine:3.6
 
+MAINTAINER Miguel Terron <miguel.a.terron@gmail.com>
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+# Set environment variables
+ENV	RETHINKDB_VERSION=2.3.6
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.vcs-url="https://github.com/mterron/rethinkdb.git" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.schema-version="1.0.0-rc.1" \
+      org.label-schema.version=$RETHINKDB_VERSION \
+      org.label-schema.description="Alpine based RethinkDB image"
+
 RUN echo "Rethinkdb for Alpine Linux" &&\
+	apk --no-cache upgrade &&\
 	apk --no-cache add su-exec &&\
     apk --no-cache add --repository http://dl-3.alpinelinux.org/alpine/edge/testing rethinkdb &&\
 	mkdir /data &&\
