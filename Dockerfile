@@ -4,9 +4,7 @@ MAINTAINER Miguel Terron <miguel.a.terron@gmail.com>
 
 ARG BUILD_DATE
 ARG VCS_REF
-
-# Set environment variables
-ENV	RETHINKDB_VERSION=2.3.6
+ARG	RETHINKDB_VERSION=2.3.6
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/mterron/rethinkdb.git" \
